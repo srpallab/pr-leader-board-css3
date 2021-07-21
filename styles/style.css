@@ -1,5 +1,8 @@
 /* Common */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+:root {
+  --header-bg: #562EFF;
+}
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -8,7 +11,7 @@ body {
 
 /* Navigation */
 nav {
-  background-color: #562EFF;
+  background-color: var(--header-bg);
   height: 100px;
   display: flex;
   justify-content: space-around;
@@ -38,6 +41,18 @@ nav {
   text-decoration: none;
   color: #fff;
   padding-right: 36px;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.toggle-menu {
+  display: none;
+}
+
+.mobile-links {
+  display: none;
 }
 
 /* Top Section */
@@ -198,4 +213,93 @@ hr {
 .fa-clock {
   color: #FF4A60;
   font-size: 0.9em;
+}
+
+/* Media Query */
+@media only screen and (max-width: 688px) {
+  header { height: 50px; }
+  nav { display: none; }
+  
+  .mobile-menu {
+    display: block;
+    background-color: var(--header-bg);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .logo img { width: 25px; }
+  .logo h1 { margin: 0; }
+  
+  .menu-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .menu-section img {
+    width: 40%;
+    padding-right: 10px;
+  }
+  
+  .fa-bars { color: #fff; }
+  
+  .mobile-links {
+    transform: scale(1, 0);
+    transform-origin: top;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    background-color: var(--header-bg);
+    padding: 10px 45px;
+    transition: transform 205ms ease-in-out;
+  }
+  
+  .mobile-links a {
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 100ms ease-in-out;
+  }
+  
+  .toggle-menu {
+    display: none;
+  }
+  
+  .toggle-menu:checked ~ .mobile-links {
+    transform: scale(1, 1);
+  }
+
+  .toggle-menu:checked ~ .mobile-links a {
+    opacity: 1;
+    transition: opacity 250ms ease-in-out 150ms;
+  }
+
+  .top-section, .bottom-section, hr {
+    width: 90%;
+  }
+  
+  .players, .courses, .blogs {
+    grid-template-columns: 1fr;
+  }
+  
+  .blog { display: block; }
+
+}
+
+/* Tablet Section */
+@media only screen and (min-width: 689px) and (max-width: 1020px) {
+  .top-section, .bottom-section, hr {
+    width: 90%;
+  }
+
+  .players, .courses {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .blogs {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  
 }
